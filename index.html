@@ -5,35 +5,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="360 Mobile Detailing & Auto Spa — professional mobile detailing, ceramic coating, interior detailing, paint correction, and motorcycle care." />
   <title>360 Mobile Detailing & Auto Spa</title>
+
   <style>
-    :root{
-      --bg:#080808;
-      --panel:#121212;
-      --panel2:#191919;
-      --gold:#d9a52a;
-      --gold2:#f2c75c;
-      --text:#f6f2e8;
-      --muted:#b8b2a6;
-      --line:rgba(217,165,42,.30);
-      --shadow:0 16px 45px rgba(0,0,0,.45);
+    :root {
+      --bg: #080808;
+      --panel: #121212;
+      --panel-2: #191919;
+      --gold: #d9a52a;
+      --gold-light: #f2c75c;
+      --text: #f6f2e8;
+      --muted: #b8b2a6;
+      --line: rgba(217, 165, 42, 0.30);
+      --shadow: 0 16px 45px rgba(0, 0, 0, 0.45);
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:Arial,Helvetica,sans-serif;
-      line-height:1.55;
+
+    * {
+      box-sizing: border-box;
     }
-    img{display:block;max-width:100%}
-    a{color:inherit;text-decoration:none}
-    .container{width:min(1120px,92%);margin:auto}
-    .site-header{
-      position:sticky;top:0;z-index:100;
-      background:rgba(8,8,8,.94);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid var(--line);
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 8, 8, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 112px;
+      padding: 8px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 145px;
+      height: auto;
+      max-height: 96px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .brand-text strong {
+      display: block;
+      color: var(--gold-light);
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+    }
+
+    .brand-text small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .menu-button {
+      display: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--gold-light);
+      font-size: 1.35rem;
     }
     .nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
     .brand{display:flex;align-items:center;gap:10px;min-width:0}
