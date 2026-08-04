@@ -151,7 +151,8 @@
       background:linear-gradient(180deg,var(--panel-2),#0d0d0d);
       border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)
     }
-    .service-card img,.gallery-card img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#0d0d0d;}
+    .service-card img{width:100%;aspect-ratio:1/1;object-fit:contain;background:#0d0d0d;}
+    .gallery-card img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#0d0d0d;}
     .service-card .copy,.gallery-card .copy{padding:18px}
     .service-card h3,.gallery-card h3{color:var(--gold-light);margin-bottom:8px}
     .service-card p,.gallery-card p{color:var(--muted);margin-bottom:0}
@@ -203,6 +204,7 @@
       .feature,.contact-grid{grid-template-columns:1fr}
     }
     @media (max-width:560px){
+      .brand img{width:150px;height:auto;max-height:92px}
       .brand-text small{display:none}
       .card-grid,.gallery-grid{grid-template-columns:1fr}
       .hero{min-height:72vh}
@@ -214,7 +216,7 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="#top" aria-label="360 Mobile Detailing home">
-        <span class="brand-text"><strong>360</strong><small>Mobile Detailing & Auto Spa</small></span>
+        <img src="assets/360-logo.png?v=4" alt="360 Mobile Detailing & Auto Spa logo" />
       </a>
       <button class="menu-button" aria-label="Open menu" aria-expanded="false">☰</button>
       <nav class="nav" aria-label="Main navigation">
