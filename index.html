@@ -154,6 +154,8 @@
     .service-card img{width:100%;aspect-ratio:1/1;object-fit:contain;background:#0d0d0d;}
     .gallery-card img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#0d0d0d;}
     .service-card .copy,.gallery-card .copy{padding:18px}
+    /* Service artwork already contains the service title. Hide the duplicate HTML title so labels never overlap. */
+    .service-card .copy h3{display:none}
     .service-card h3,.gallery-card h3{color:var(--gold-light);margin-bottom:8px}
     .service-card p,.gallery-card p{color:var(--muted);margin-bottom:0}
     .feature{
@@ -216,7 +218,7 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="#top" aria-label="360 Mobile Detailing home">
-        <img src="assets/360-logo.png?v=4" alt="360 Mobile Detailing & Auto Spa logo" />
+        <img src="assets/360-logo.png?v=5" alt="360 Mobile Detailing & Auto Spa logo" />
       </a>
       <button class="menu-button" aria-label="Open menu" aria-expanded="false">☰</button>
       <nav class="nav" aria-label="Main navigation">
