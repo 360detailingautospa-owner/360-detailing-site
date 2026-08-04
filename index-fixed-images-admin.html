@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="360 Mobile Detailing & Auto Spa — professional mobile detailing, ceramic coating, interior detailing, paint correction, and motorcycle care." />
+  <title>360 Mobile Detailing & Auto Spa</title>
+
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #121212;
+      --panel-2: #191919;
+      --gold: #d9a52a;
+      --gold-light: #f2c75c;
+      --text: #f6f2e8;
+      --muted: #b8b2a6;
+      --line: rgba(217, 165, 42, 0.30);
+      --shadow: 0 16px 45px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 8, 8, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 112px;
+      padding: 8px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 145px;
+      height: auto;
+      max-height: 96px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .brand-text strong {
+      display: block;
+      color: var(--gold-light);
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+    }
+
+    .brand-text small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .menu-button {
+      display: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--gold-light);
+      font-size: 1.35rem;
+    }
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px;min-width:0}
+    .brand img{width:100px;height:100px;object-fit:contain}
+    .brand-text strong{display:block;color:var(--gold-light);font-size:1.1rem;letter-spacing:.06em}
+    .brand-text small{display:block;color:var(--muted);font-size:.72rem}
+    .menu-button{
+      display:none;border:1px solid var(--line);background:var(--panel);
+      color:var(--gold-light);font-size:1.35rem;border-radius:10px;padding:8px 12px;
+    }
+    .nav{display:flex;align-items:center;gap:18px;font-size:.94rem}
+    .nav a:hover{color:var(--gold-light)}
+    .nav-cta,.btn-gold{
+      background:linear-gradient(135deg,var(--gold-light),var(--gold));
+      color:#111!important;font-weight:800;border-radius:999px;padding:11px 18px;
+    }
+    .hero{
+      min-height:76vh;
+      display:grid;place-items:center;
+      position:relative;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.45)),
+        url("assets/transform_your_ride_banner.jpg") center/cover no-repeat;
+      border-bottom:1px solid var(--line);
+    }
+    .hero-content{padding:86px 0;max-width:720px}
+    .eyebrow{
+      color:var(--gold-light);text-transform:uppercase;letter-spacing:.18em;
+      font-size:.78rem;font-weight:800;margin:0 0 12px;
+    }
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(2.5rem,7vw,5.4rem);line-height:.98;margin-bottom:22px}
+    h1 span{color:var(--gold-light)}
+    .lead{font-size:clamp(1rem,2.4vw,1.25rem);color:#e3ded3;max-width:640px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .btn{display:inline-block;border-radius:999px;padding:13px 20px;font-weight:800;border:1px solid var(--gold)}
+    .btn-outline{color:var(--gold-light);background:rgba(0,0,0,.35)}
+    .trust-row{display:flex;flex-wrap:wrap;gap:18px;color:#d8d2c7;margin-top:25px;font-size:.92rem}
+    .section{padding:76px 0}
+    .section-dark{background:var(--panel)}
+    .section-head{max-width:760px;margin-bottom:32px}
+    .section h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08}
+    .section-intro{color:var(--muted);font-size:1.04rem}
+    .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service-card,.gallery-card{
+      background:linear-gradient(180deg,var(--panel-2),#0d0d0d);
+      border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)
+    }
+    .service-card img,.gallery-card img{width:100%;aspect-ratio:4/3;object-fit:contain;}
+    .service-card .copy,.gallery-card .copy{padding:18px}
+    .service-card h3,.gallery-card h3{color:var(--gold-light);margin-bottom:8px}
+    .service-card p,.gallery-card p{color:var(--muted);margin-bottom:0}
+    .feature{
+      display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center
+    }
+    .feature img{width:100%;border-radius:22px;border:1px solid var(--line);box-shadow:var(--shadow)}
+    .check-list{padding-left:20px;color:#ddd7cb}
+    .check-list li{margin:8px 0}
+    .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .cta-band{
+      padding:56px 0;
+      background:
+        linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.78)),
+        url("assets/service_mobile_service_new.jpg") center/cover no-repeat;
+      border-block:1px solid var(--line);
+      text-align:center
+    }
+    .cta-band h2{font-size:clamp(2rem,5vw,3.4rem);margin-bottom:12px}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .contact-card{
+      background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px
+    }
+    .contact-list{display:grid;gap:12px}
+    .contact-list a{color:var(--gold-light);font-weight:700}
+    form{display:grid;gap:12px}
+    input,select,textarea{
+      width:100%;background:#0b0b0b;color:var(--text);
+      border:1px solid #3b3425;border-radius:10px;padding:13px;font:inherit
+    }
+    textarea{min-height:120px;resize:vertical}
+    button[type=submit]{border:0;cursor:pointer}
+    footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted)}
+    .footer-grid{display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}
+    .footer-brand{display:flex;align-items:center;gap:10px}
+    .footer-brand img{width:52px;height:52px;object-fit:contain}
+    .footer-links{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .footer-links a:last-child{color:var(--gold-light);font-size:.85rem}
+    @media (max-width:850px){
+      .menu-button{display:block}
+      .nav{
+        display:none;position:absolute;left:4%;right:4%;top:78px;
+        flex-direction:column;align-items:stretch;background:#0c0c0c;
+        border:1px solid var(--line);border-radius:16px;padding:14px
+      }
+      .nav.open{display:flex}
+      .nav a{padding:10px 12px}
+      .card-grid{grid-template-columns:1fr 1fr}
+      .feature,.contact-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      .brand-text small{display:none}
+      .card-grid,.gallery-grid{grid-template-columns:1fr}
+      .hero{min-height:72vh}
+      .section{padding:58px 0}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="360 Mobile Detailing home">
+        <span class="brand-text"><strong>360</strong><small>Mobile Detailing & Auto Spa</small></span>
+      </a>
+      <button class="menu-button" aria-label="Open menu" aria-expanded="false">☰</button>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#motorcycles">Motorcycles</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="nav-cta">Get a Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-content">
+        <p class="eyebrow">Premium mobile auto care</p>
+        <h1>Experience the <span>360 Difference</span></h1>
+        <p class="lead">Professional detailing, ceramic coating, interior care, paint correction, and motorcycle detailing—brought directly to you.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#contact">Get a Free Quote</a>
+          <a class="btn btn-outline" href="tel:+12485076459">Call 248-507-6459</a>
+        </div>
+        <div class="trust-row">
+          <span>✓ Fully mobile</span><span>✓ Cars, trucks & motorcycles</span><span>✓ Premium results</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Services</p>
+          <h2>Detailing built around your vehicle</h2>
+          <p class="section-intro">Choose the care your vehicle needs, from routine maintenance to deep cleaning and long-lasting protection.</p>
+        </div>
+        <div class="card-grid">
+          <article class="service-card"><img src="assets/service_1.png" alt="Mobile exterior detailing"><div class="copy"><h3>Mobile Exterior Detail</h3><p>Foam wash, wheels, tires, exterior cleaning, and a clean finished shine.</p></div></article>
+          <article class="service-card"><img src="assets/service_2.png" alt="Interior vehicle detailing"><div class="copy"><h3>Interior Detailing</h3><p>Deep cleaning, conditioning, and protection for seats, carpets, panels, and trim.</p></div></article>
+          <article class="service-card"><img src="assets/service_3.png" alt="Ceramic coating service"><div class="copy"><h3>Ceramic Coating</h3><p>Long-lasting shine, easier maintenance, and added protection for painted surfaces.</p></div></article>
+          <article class="service-card"><img src="assets/service_4.png" alt="Vehicle paint correction"><div class="copy"><h3>Paint Correction</h3><p>Reduce swirls and restore clarity, depth, and gloss to your vehicle’s finish.</p></div></article>
+          <article class="service-card"><img src="assets/service_5.png" alt="Wheel and tire detailing"><div class="copy"><h3>Wheel & Tire Detail</h3><p>Focused cleaning and protection for wheels, tires, and hard-to-reach areas.</p></div></article>
+          <article class="service-card"><img src="assets/service_6.png" alt="Engine bay detailing"><div class="copy"><h3>Engine Bay Detail</h3><p>Careful cleaning and dressing to improve the appearance of your engine compartment.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="motorcycles">
+      <div class="container feature">
+        <div>
+          <p class="eyebrow">Motorcycle care</p>
+          <h2>Harley-Davidson detailing and ceramic coating</h2>
+          <p class="section-intro">Professional attention for chrome, painted surfaces, wheels, controls, and hard-to-reach areas.</p>
+          <ul class="check-list">
+            <li>Detailed hand cleaning</li>
+            <li>Chrome polishing and paint enhancement</li>
+            <li>Ceramic coating options</li>
+            <li>One motorcycle serviced at a time</li>
+          </ul>
+          <a class="btn btn-gold" href="#contact">Request Motorcycle Service</a>
+        </div>
+        <img src="assets/ceramic_motorcycle.png" alt="Black motorcycle with ceramic coating and water beading" />
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Gallery</p>
+          <h2>Results worth showing off</h2>
+          <p class="section-intro">A closer look at the services and finishes available from 360 Mobile Detailing & Auto Spa.</p>
+        </div>
+        <div class="gallery-grid">
+          <article class="gallery-card"><img src="assets/before_detailing_new.jpg" alt="Vehicle before detailing"><div class="copy"><h3>Before Detailing</h3><p>The vehicle before the 360 detailing treatment.</p></div></article>
+          <article class="gallery-card"><img src="assets/after_detailing_new.jpg" alt="Vehicle after detailing"><div class="copy"><h3>After Detailing</h3><p>A clean, polished finish after professional detailing.</p></div></article>
+          <article class="gallery-card"><img src="assets/ceramic_motorcycle.png" alt="Ceramic-coated motorcycle"><div class="copy"><h3>Ceramic-Coated Motorcycle</h3><p>Gloss and protection for painted and chrome surfaces.</p></div></article>
+          <article class="gallery-card"><img src="assets/motorcycle_black_detailing_new.jpg" alt="Black motorcycle detailing"><div class="copy"><h3>Black Motorcycle Detail</h3><p>Careful cleaning and finishing for a deep, clean shine.</p></div></article>
+          <article class="gallery-card"><img src="assets/motorcycle_blue_new.jpg" alt="Blue motorcycle finish"><div class="copy"><h3>Blue Motorcycle Finish</h3><p>A polished finish that brings out the paint and chrome.</p></div></article>
+          <article class="gallery-card"><img src="assets/motorcycle_hand_wash_new.jpg" alt="Motorcycle hand wash"><div class="copy"><h3>Motorcycle Hand Wash</h3><p>Detailed hand cleaning for hard-to-reach areas.</p></div></article>
+          <article class="gallery-card"><img src="assets/motorcycle_paint_correction_new.jpg" alt="Motorcycle paint correction"><div class="copy"><h3>Motorcycle Paint Correction</h3><p>Improved paint clarity, depth, and gloss.</p></div></article>
+          <article class="gallery-card"><img src="assets/motorcycle_red_new.jpg" alt="Red motorcycle finish"><div class="copy"><h3>Red Motorcycle Finish</h3><p>A rich, glossy finish after professional detailing.</p></div></article>
+          <article class="gallery-card"><img src="assets/motorcycle_wash_new.jpg" alt="Motorcycle wash detail"><div class="copy"><h3>Motorcycle Wash Detail</h3><p>A thorough wash and finish for the entire motorcycle.</p></div></article>
+          <article class="gallery-card"><img src="assets/service_exterior_wash_new.jpg" alt="Exterior wash service"><div class="copy"><h3>Exterior Wash</h3><p>Professional exterior cleaning with a finished shine.</p></div></article>
+          <article class="gallery-card"><img src="assets/service_interior_detailing_new.jpg" alt="Interior detailing service"><div class="copy"><h3>Interior Detailing</h3><p>Deep cleaning for seats, carpets, panels, and trim.</p></div></article>
+          <article class="gallery-card"><img src="assets/service_ceramic_coating_new.jpg" alt="Ceramic coating service"><div class="copy"><h3>Ceramic Coating</h3><p>Long-lasting gloss and easier vehicle maintenance.</p></div></article>
+          <article class="gallery-card"><img src="assets/service_paint_correction_new.jpg" alt="Paint correction service"><div class="copy"><h3>Paint Correction</h3><p>Reduce swirls and restore paint clarity and depth.</p></div></article>
+          <article class="gallery-card"><img src="assets/service_mobile_service_new.jpg" alt="Mobile detailing service"><div class="copy"><h3>Mobile Service</h3><p>Professional vehicle care brought directly to you.</p></div></article>
+          <article class="gallery-card"><img src="assets/service_motorcycle_detailing_new.jpg" alt="Motorcycle detailing service"><div class="copy"><h3>Motorcycle Detailing</h3><p>Specialized detailing for paint, chrome, wheels, and controls.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="about">
+      <div class="container feature">
+        <img src="assets/service_mobile_service_new.jpg" alt="360 Mobile Detailing & Auto Spa mobile service" />
+        <div>
+          <p class="eyebrow">Owner operated</p>
+          <h2>Professional care with personal attention</h2>
+          <p class="section-intro">360 Mobile Detailing & Auto Spa brings the tools, products, and attention to detail directly to your location. Every service is focused on helping your vehicle look its best.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container">
+        <p class="eyebrow">Ready for the 360 treatment?</p>
+        <h2>Let’s make your vehicle stand out.</h2>
+        <p>Tell us what you drive, where you are, and which service you need.</p>
+        <div class="hero-actions" style="justify-content:center">
+          <a class="btn btn-gold" href="#contact">Get a Free Quote</a>
+          <a class="btn btn-outline" href="tel:+12485076459">Call or Text</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-card">
+          <p class="eyebrow">Contact & booking</p>
+          <h2>Request your free quote</h2>
+          <p class="section-intro">For the fastest response, call or text.</p>
+          <div class="contact-list">
+            <a href="tel:+12485076459"><strong>Phone:</strong> 248-507-6459</a>
+            <a href="mailto:360detailingautospa@gmail.com"><strong>Email:</strong> 360detailingautospa@gmail.com</a>
+            <div><strong>Website:</strong> 360detailingautospa.com</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <form action="mailto:360detailingautospa@gmail.com" method="post" enctype="text/plain">
+            <input name="Name" placeholder="Your name" required />
+            <input name="Phone" type="tel" placeholder="Phone number" required />
+            <input name="Email" type="email" placeholder="Email address" />
+            <input name="Vehicle" placeholder="Vehicle year, make, and model" />
+            <select name="Service">
+              <option value="">Choose a service</option>
+              <option>Mobile Exterior Detail</option>
+              <option>Interior Detailing</option>
+              <option>Ceramic Coating</option>
+              <option>Paint Correction</option>
+              <option>Motorcycle Detailing</option>
+              <option>Other</option>
+            </select>
+            <textarea name="Message" placeholder="Tell us what you need"></textarea>
+            <button class="btn btn-gold" type="submit">Send Quote Request</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand"><span>360 Mobile Detailing & Auto Spa</span></div>
+      <p>© <span id="year"></span> 360 Mobile Detailing & Auto Spa</p>
+      <div class="footer-links"><a href="tel:+12485076459">248-507-6459</a> · <a href="admin.html" rel="nofollow">Admin</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const nav = document.querySelector('.nav');
+    menuButton?.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+    });
+    document.querySelectorAll('.nav a').forEach(link =>
+      link.addEventListener('click', () => nav.classList.remove('open'))
+    );
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
