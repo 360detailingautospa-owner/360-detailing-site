@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Admin Login | 360 Mobile Detailing</title>
+  <style>
+    :root{--bg:#080808;--panel:#141414;--gold:#d9a52a;--gold2:#f2c75c;--text:#f6f2e8;--muted:#b8b2a6;--line:rgba(217,165,42,.3)}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;min-height:100vh}
+    a{color:var(--gold2);text-decoration:none}
+    .wrap{width:min(1100px,92%);margin:auto;padding:40px 0}
+    .login-shell{min-height:85vh;display:grid;place-items:center}
+    .panel{width:min(460px,100%);background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 16px 45px rgba(0,0,0,.45)}
+    h1,h2,p{margin-top:0}
+    h1,h2{color:var(--gold2)}
+    label{display:block;margin:14px 0 6px;font-weight:700}
+    input,textarea,select{width:100%;background:#090909;color:var(--text);border:1px solid #4a402a;border-radius:10px;padding:13px;font:inherit}
+    button{width:100%;margin-top:16px;border:0;border-radius:999px;padding:13px 18px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#111;font-weight:800;cursor:pointer}
+    .muted{color:var(--muted);font-size:.92rem}
+    .error{color:#ff9c9c;min-height:1.3em;margin-top:12px}
+    .dashboard{display:none}
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+    .logout{width:auto;margin:0;padding:10px 16px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}
+    .card strong{display:block;color:var(--gold2);font-size:1.8rem}
+    .section{margin-top:22px}
+    .table-wrap{overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:18px}
+    table{width:100%;border-collapse:collapse;min-width:760px}
+    th,td{text-align:left;padding:13px;border-bottom:1px solid #302a1f}
+    th{color:var(--gold2)}
+    .setup{background:#211a0e;border:1px solid var(--gold);padding:14px;border-radius:12px;margin-top:16px}
+    @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section id="loginView" class="login-shell">
+      <div class="panel">
+        <p><a href="index.html">← Back to website</a></p>
+        <h1>Admin Login</h1>
+        <p class="muted">Sign in with the admin email and password created in Supabase.</p>
+        <form id="loginForm">
+          <label for="email">Admin email</label>
+          <input id="email" type="email" autocomplete="username" required />
+          <label for="password">Password</label>
+          <input id="password" type="password" autocomplete="current-password" required />
+          <button type="submit">Sign In</button>
+          <p id="loginError" class="error"></p>
+        </form>
+        <div id="setupNotice" class="setup" hidden>
+          Supabase is not configured yet. Open <strong>supabase-config.js</strong> and paste your project URL and anon key.
+        </div>
+      </div>
+    </section>
+
+    <section id="dashboardView" class="dashboard">
+      <div class="topbar">
+        <div>
+          <p class="muted">360 Mobile Detailing & Auto Spa</p>
+          <h1>Admin Dashboard</h1>
+        </div>
+        <button id="logoutButton" class="logout">Log Out</button>
+      </div>
+
+      <div class="grid">
+        <div class="card"><span class="muted">Quote requests</span><strong id="quoteCount">0</strong></div>
+        <div class="card"><span class="muted">New requests</span><strong id="newCount">0</strong></div>
+        <div class="card"><span class="muted">Appointments</span><strong id="appointmentCount">0</strong></div>
+      </div>
+
+      <section class="section">
+        <h2>Customer Requests</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Date</th><th>Name</th><th>Phone</th><th>Vehicle</th><th>Service</th><th>Status</th></tr></thead>
+            <tbody id="requestsBody"><tr><td colspan="6" class="muted">No requests loaded.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section card">
+        <h2>What this dashboard can manage</h2>
+        <p class="muted">Once the Supabase tables are created, this page can securely display quote requests and appointments. Your password is never stored in the public HTML.</p>
+      </section>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script>
+    const loginView = document.getElementById('loginView');
+    const dashboardView = document.getElementById('dashboardView');
+    const loginError = document.getElementById('loginError');
+    const setupNotice = document.getElementById('setupNotice');
+    const configured = window.SUPABASE_URL && window.SUPABASE_ANON_KEY &&
+      !window.SUPABASE_URL.includes('YOUR_') && !window.SUPABASE_ANON_KEY.includes('YOUR_');
+
+    let client = null;
+    if (configured) {
+      client = supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+    } else {
+      setupNotice.hidden = false;
+    }
+
+    function showDashboard() {
+      loginView.style.display = 'none';
+      dashboardView.style.display = 'block';
+      loadDashboard();
+    }
+
+    function showLogin() {
+      dashboardView.style.display = 'none';
+      loginView.style.display = 'grid';
+    }
+
+    async function loadDashboard() {
+      if (!client) return;
+      const { data: requests, error } = await client
+        .from('quote_requests')
+        .select('created_at,name,phone,vehicle,service,status')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        document.getElementById('requestsBody').innerHTML =
+          '<tr><td colspan="6">Unable to load requests. Check the table and security policies.</td></tr>';
+        return;
+      }
+
+      const rows = requests || [];
+      document.getElementById('quoteCount').textContent = rows.length;
+      document.getElementById('newCount').textContent =
+        rows.filter(r => !r.status || r.status === 'new').length;
+
+      const body = document.getElementById('requestsBody');
+      if (!rows.length) {
+        body.innerHTML = '<tr><td colspan="6" class="muted">No requests yet.</td></tr>';
+        return;
+      }
+
+      body.innerHTML = rows.map(r => `
+        <tr>
+          <td>${new Date(r.created_at).toLocaleDateString()}</td>
+          <td>${escapeHtml(r.name || '')}</td>
+          <td>${escapeHtml(r.phone || '')}</td>
+          <td>${escapeHtml(r.vehicle || '')}</td>
+          <td>${escapeHtml(r.service || '')}</td>
+          <td>${escapeHtml(r.status || 'new')}</td>
+        </tr>`).join('');
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, c => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
+      })[c]);
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      loginError.textContent = '';
+      if (!client) {
+        loginError.textContent = 'Supabase must be configured first.';
+        return;
+      }
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const { error } = await client.auth.signInWithPassword({ email, password });
+      if (error) loginError.textContent = error.message;
+      else showDashboard();
+    });
+
+    document.getElementById('logoutButton').addEventListener('click', async () => {
+      if (client) await client.auth.signOut();
+      showLogin();
+    });
+
+    (async () => {
+      if (!client) return;
+      const { data } = await client.auth.getSession();
+      if (data.session) showDashboard();
+      client.auth.onAuthStateChange((_event, session) => {
+        if (session) showDashboard();
+        else showLogin();
+      });
+    })();
+  </script>
+</body>
+</html>
