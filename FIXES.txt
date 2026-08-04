@@ -1,0 +1,8 @@
+360 Mobile Detailing website fixes
+
+- Corrected all six service-card image/title matches.
+- Interior Detailing now appears only once as a service.
+- Removed duplicate promotional service cards from the gallery.
+- Replaced the hero background with a clean, text-free vehicle image.
+- Changed card images to fill their frames without blank bands.
+- Kept the Supabase-authenticated admin dashboard and setup files.
